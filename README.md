@@ -1,5 +1,9 @@
 #### Docker command line
 ```shell
+    
+    docker-machine create --driver=virtualbox default
+    eval "$(docker-machine env default)"
+    
     docker ps 
     docker ps -a
 
