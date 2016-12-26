@@ -3,6 +3,8 @@
     
     docker-machine create --driver=virtualbox default
     eval "$(docker-machine env default)"
+
+    docker help <HELP_SOMETHING>
     
     docker ps 
     docker ps -a
