@@ -1,6 +1,7 @@
 #### Docker command line
 ```shell
     docker help <COMMAND> # push, run, start etc.
+    docker network ls # Docker networks
 
  # Docker Machine
     docker-machine create --driver=virtualbox default # Create driver 
