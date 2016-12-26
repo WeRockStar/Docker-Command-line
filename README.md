@@ -60,6 +60,11 @@
     docker network create <NETWORK_NAME> # Create simple network
     docker network disconnect <Network> <CONTAINER_ID or CONTAINER_NAME>  # Disconnect network
 
+    - Linking containers (Can link only to the running container.)
+    docker run -it --name=ubuntu --link mysql:mysql ubuntu # Link with mysql container
+    more /etc/hosts  # Linking is persistent
+    env | grep MYSQL  # Filter MYSQL environment variable
+
  # Docker Swarm
     docker swarm init   # Enable swarm mode
     docker node ls      # List of nodes
