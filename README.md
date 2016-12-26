@@ -1,7 +1,6 @@
 #### Docker command line
 ```shell
     docker help <COMMAND> # push, run, start etc.
-    docker network ls # Docker networks
 
  # Docker Machine
     docker-machine create --driver=virtualbox default # Create driver 
@@ -47,5 +46,14 @@
     docker push     # Psuh image or repository into a Registry or Docker hub
     docker search   # Search Docker hub for images
 
+ # Docker Network
+    docker network ls # Docker networks
+    docker run --net=<NETWORK> <IMAGE_NAME> # Set network for image
+    docker run -it --net=<NETWORK> --name=<CONTAINER_NAME> -d <IMAGE_NAME> # Set network for image
+    docker run --net=none <IMAGE_NAME> # Running image without the network
+    docker network inspect <NETWORK_NAME> # Inspect network information
+    docker inspect <CONTAINER_ID> | grep IPAddress # Filter network information 
+    docker network create <NETWORK_NAME> # Create simple network
+    docker network disconnect <Network> <CONTAINER_ID or CONTAINER_NAME>  # Disconnect network
 ```
 
