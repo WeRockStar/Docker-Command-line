@@ -23,6 +23,7 @@
     docker run/start <CONTAINER_ID>
     docker rm <CONTAINER_ID>
     docker rm <CONTAINER_ID> `docker ps -aq` or docker rmi $(docker images -q)
+    docker rmi $(docker images -q -f dangling=true) # Remove all un-tagged
 
     docker exec -it <CONTAINER_ID> bash
 ```
