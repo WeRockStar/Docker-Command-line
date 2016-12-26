@@ -22,7 +22,7 @@
     docker stop <CONTAINER_ID>
     docker run/start <CONTAINER_ID>
     docker rm <CONTAINER_ID>
-    docker rm <CONTAINER_ID> `docker ps -aq`
+    docker rm <CONTAINER_ID> `docker ps -aq` or docker rmi $(docker images -q)
 
     docker exec -it <CONTAINER_ID> bash
 ```
