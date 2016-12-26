@@ -3,7 +3,7 @@
     docker help <COMMAND> # push, run, start etc.
 
  # Docker Machine
-    docker-machine create --driver=virtualbox default # Create driver 
+    docker-machine create --driver=virtualbox <MACHINE_NAME> # Create driver 
     eval "$(docker-machine env default)"
     docker-machine ls # Show list of machine
     docker-machine start default # Start docker machine
@@ -47,7 +47,11 @@
     docker search   # Search Docker hub for images
 
  # Docker Network
+    docker run --expose=7000-8000 <CONTAINER_ID or CONTAINER_NAME>   #  Range of ports
+    docker run -p 7000-8000:7000-8000 <CONTAINER_ID or CONTAINER_NAME>
     docker network ls # Docker networks
+    docker port <CONTAINER_ID>    # See port 
+    docker run --name nginx -d -p 8080:80 -p 8081:80 nginx # Two ports expose , but only one of them
     docker run --net=<NETWORK> <IMAGE_NAME> # Set network for image
     docker run -it --net=<NETWORK> --name=<CONTAINER_NAME> -d <IMAGE_NAME> # Set network for image
     docker run --net=none <IMAGE_NAME> # Running image without the network
@@ -55,5 +59,25 @@
     docker inspect <CONTAINER_ID> | grep IPAddress # Filter network information 
     docker network create <NETWORK_NAME> # Create simple network
     docker network disconnect <Network> <CONTAINER_ID or CONTAINER_NAME>  # Disconnect network
+
+ # Docker Swarm
+    docker swarm init   # Enable swarm mode
+    docker node ls      # List of nodes
+
+    # Multi Networking
+    docker $(docker-machine config host01) run -d -p "8500:8500" -h "consul" progrium/consul -server -bootstrap
+    docker-machine create -d virtualbox  --engine-opt="cluster-store=consul://$(docker-machine ip host01):8500" --engine-opt="cluster-advertise=eth1:0" host02
+    docker-machine create -d virtualbox  --engine-opt="cluster-store=consul://$(docker-machine ip host01):8500" --engine-opt="cluster-advertise=eth1:0" host03
+
+    - Host 02
+    docker $(docker-machine config host02) network create -d overlay overlayNetwork
+    docker $(docker-machine config host02) network ls
+    # Run nginx web server in host02
+    docker $(docker-machine config host02) run -itd --name=nginx --net=overlayNetwork nginx
+    
+    - Host 03 
+    docker $(docker-machine config host03) network ls
+    # Testing multi-host network, fetch index page from host03
+    docker $(docker-machine config host03) run -it --net=overlayNetwork busybox
 ```
 
