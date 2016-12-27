@@ -28,7 +28,7 @@
     docker inspect <CONTAINER_ID> # Inspect low-level information on container
     docker exec -it <CONTAINER_ID> bash # Interactive option with container 
     
-# Docker Images More [Dockerfile](https://github.com/WeRockStar/Docker-Command-line/blob/master/Dockerfile.md)
+# Docker Images More 
     docker images # Show list image
     docker images -a # Show list image
     docker rmi $(docker images -q) # Remove all image
@@ -38,6 +38,8 @@
     docker run -it ubuntu /bin/bash # Run image with Interactive option
     docker run <IMAGE_NAME> mkdir /home/test # Create a new folder
     docker run —name <CONTAINER_NAME> -v <LOCAL_PATH>:<CONTAINER_PATH>:ro -p <LINUX_POST>:<CONTAINER_PORT> -d <IMAGE_NAME> # Run container with define container name, volume path and specific image
+    # More 
+    [Dockerfile](https://github.com/WeRockStar/Docker-Command-line/blob/master/Dockerfile.md)
 
  # Docker Registry
     docker login    # Login into Docker regsitry
