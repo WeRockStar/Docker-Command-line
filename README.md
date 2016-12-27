@@ -84,5 +84,11 @@
     docker $(docker-machine config host03) network ls
     # Testing multi-host network, fetch index page from host03
     docker $(docker-machine config host03) run -it --net=overlayNetwork busybox
+
+ # Docker Volume
+    docker run -it -v /Users/<YOUR_USER>/<PATH>/:<CONTAINER_PATH> <IMAGE_NAME>  # Run ubuntu and create volume for our data
+    docker volume ls  # List volume
+    docker volume ls -f dangling=true  # Filter volume
+    docker volume ls -f driver=default # Filter volume with driver
 ```
 
