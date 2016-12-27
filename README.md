@@ -87,12 +87,19 @@
 
  # Docker Volume
     docker run -it -v /Users/<YOUR_USER>/<PATH>/:<CONTAINER_PATH> <IMAGE_NAME>  # Run ubuntu and create volume for our data
-    docker volume ls  # List volume
+    docker volume ls  # List volume 
     docker volume ls -f dangling=true  # Filter volume
     docker volume ls -f driver=default # Filter volume with driver
     docker volume ls -f name=local   # Filter volume with volume name
+    docker volume rm $(docker volume ls -qf dangling=true)  # Filter remove volume not a referencing any containers
+    docker volume create --name <VOLUME_NAME>  # Create volume
+    docker run -it -v <VOLUME_NAME>:/data ubuntu  # Run with volume and <VOLUME_NAME> volume will then be available for your container in /data.
     docker volume inspect <VOLUME_ID>  # Inspect information on volume
     docker volume rm <VOLUME_ID or VOLUME_NAME>  # Remove volume
     docker rm -v <CONTAINER_ID or CONTAINER_NAME>     # Remove a volume by referencing a container
+    docker run --name docker-nginx -p 80:80 -d --volumes-from <CONTAINER_ID or CONTAINER_NAME> nginx  # Run nginx with volume referencing <CONTAINER_NAME> Container's
+
+ # Working Docker-Hub   
+    docker login --username=<Docker ID> --password=<PASSWORD>
 ```
 
