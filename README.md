@@ -90,5 +90,9 @@
     docker volume ls  # List volume
     docker volume ls -f dangling=true  # Filter volume
     docker volume ls -f driver=default # Filter volume with driver
+    docker volume ls -f name=local   # Filter volume with volume name
+    docker volume inspect <VOLUME_ID>  # Inspect information on volume
+    docker volume rm <VOLUME_ID or VOLUME_NAME>  # Remove volume
+    docker rm -v <CONTAINER_ID or CONTAINER_NAME>     # Remove a volume by referencing a container
 ```
 
