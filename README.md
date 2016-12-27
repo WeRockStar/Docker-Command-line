@@ -100,6 +100,11 @@
     docker run --name docker-nginx -p 80:80 -d --volumes-from <CONTAINER_ID or CONTAINER_NAME> nginx  # Run nginx with volume referencing <CONTAINER_NAME> Container's
 
  # Working Docker-Hub   
-    docker login --username=<Docker ID> --password=<PASSWORD>
+    docker login --username=<Docker ID> --password=<PASSWORD>  # Login docker hub
+    docker login --username<Docker ID> --password<PASSWORD> localhost:8080  # Login docker provide a registry's hostname
+    docker logout
+    docker search <IMAGE_NAME>  # Search images on docker hub
+    more .docker/config.json  # Get the credentials from the local storage
+    Remove login credentials for https://index.docker.io/v1/ 
 ```
 
