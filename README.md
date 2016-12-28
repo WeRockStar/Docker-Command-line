@@ -40,6 +40,7 @@
     docker run -it ubuntu /bin/bash # Run image with Interactive option
     docker run <IMAGE_NAME> mkdir /home/test # Create a new folder
     docker run —name <CONTAINER_NAME> -v <LOCAL_PATH>:<CONTAINER_PATH>:ro -p <LINUX_POST>:<CONTAINER_PORT> -d <IMAGE_NAME> # Run container with define container name, volume path and specific image
+    docker build -t <IMAGE_NAME>:<IMAGE_TAG>  # Create docker image from docker
 
  # Docker Registry
     docker login    # Login into Docker regsitry
