@@ -13,5 +13,13 @@
     # COPY supports only the basic copying of local files into the container. ADD features some more, such as archive extraction, downloading files through URL
 
     CMD ["EXRCUTABLE", "PARAMETER" , "PARAMETER"]  # Provide default for executable container
+    # This will not invoke a command shell.
+    # ENTRYPOINT ["COMMAND", "PARAMETER", "PARAMETER"]
+    ENTRYPOINT  ["EXRCUTABLE", "PARAMETER" , "PARAMETER"]  # ENTRYPOINT was developed for more customization, and some functionality overlaps between those two instructions
+    # If you want using shell
+    # ENTRYPOINT [ "sh", "-c", "echo $HOSTNAME" ]
+    ENTRYPOINT ["sh", "-c", "echo $HOSTNAME" ]  # Using shell processing
+
+    LABEL "KEY"="VALUE"    # Add meta data to images
     
 ```
