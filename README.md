@@ -27,10 +27,12 @@
     docker run/start <CONTAINER_ID> # Start with new container and run container
 
     docker logs <CONTAINER_ID> # Log of container 
+    docker logs -f <CONTAINER_ID> # Log of container (-f flag acts same tail command)
     docker inspect <CONTAINER_ID> # Inspect low-level information on container
     docker exec -it <CONTAINER_ID> bash # Interactive option with container 
+    docker run --rm -it Ubuntu /bin/bash  # Docker will remove container after it shutdown.
     
-# Docker Images More 
+# Docker Images More (-t tail command, -d detached)
     docker images # Show list image
     docker images -a # Show list image
     docker rmi $(docker images -q) # Remove all image
@@ -42,8 +44,11 @@
     docker run —name <CONTAINER_NAME> -v <LOCAL_PATH>:<CONTAINER_PATH>:ro -p <LINUX_POST>:<CONTAINER_PORT> -d <IMAGE_NAME> # Run container with define container name, volume path and specific image
     #  flag --no-cache
     docker build -t <IMAGE_NAME>:<IMAGE_TAG>  # Create docker image from docker
+    docker build -t <USERNAME>/<IMAGE_NAME>:<TAG> -t <USERNAME>/<IMAGE_NAME>:<TAG> <PATH>  # Build image from Dockerfile multiple repository (using multiple -t) 
     docker run <IMAGE_ID> "echo" "Hello world"  # Executable (Overriding the default CMD instruction from the Dockerfile)
     docker run --env <KEY>=<VALUE>  # Set environment variable
+    docker run -d <IMAGE_NAME> tail -f /dev/null  # Image using detached mode, /dev/null using forground mode
+    docker run -a stdin -a stdout -i -t centos /bin/bash  # Change default behavior just display input, output 
 
  # Docker Registry
     docker login    # Login into Docker regsitry
