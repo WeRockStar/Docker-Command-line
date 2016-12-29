@@ -117,5 +117,24 @@
     docker search <IMAGE_NAME>  # Search images on docker hub
     more .docker/config.json  # Get the credentials from the local storage
     Remove login credentials for https://index.docker.io/v1/ 
+
+ # Docker mornitoring 
+    docker inspect -f {{.LogPath}} <CONTAINER_ID>  # View logs path within container
+    docker stats <CONTAINER_ID>
+    docker run --log-driver=syslog ubuntu  # Choose log driver (syslog)
+    docker events -f container=<CONTAINER_ID>  # View events real time
+    docker inspect -f '{{.State.ExitCode}}' <IMAGE_NAME or IMAGE_ID>
+    docker inspect -f "{{ .RestartCount }}"<CONTAINER_ID>  # View counts of container restart.
+    # Exit code
+    - 125   # Command fails by itself
+    - 126   # Command cannot  be invoke
+    - 127 Command cannot be found
+
+    dockerrun --restart=always mongo  # Restart automatically restart
+    dockerrun --restart=on-failure:5 mongo  # Restart your container whenever it exits with a non-zero(Error) exit status and not restart otherwise.
+    docker update --restart=always <CONTAINER_ID>  # Update restart policy(On the fly)
+    docker inspect --format '{{ .HostConfig.RestartPolicy.Name }}'<CONTAINER_ID>  # View restart policy.
+
+
 ```
 
