@@ -50,6 +50,9 @@
     docker run -d <IMAGE_NAME> tail -f /dev/null  # Image using detached mode, /dev/null using forground mode
     docker run -a stdin -a stdout -i -t centos /bin/bash  # Change default behavior just display input, output 
 
+    docker tag <IMAGE_NAME>:<TAG> <IMAGE_NAME>:<TAG>  # Tag image
+    docker push <USERNAME>/<REPOSITORY>  # Push image to docker registry
+
  # Docker Registry
     docker login    # Login into Docker regsitry
     docker logout   # Logout Docker regsitry
@@ -135,6 +138,9 @@
     docker update --restart=always <CONTAINER_ID>  # Update restart policy(On the fly)
     docker inspect --format '{{ .HostConfig.RestartPolicy.Name }}'<CONTAINER_ID>  # View restart policy.
 
+    # Resources
+    docker run -it -m 512m ubuntu  # Set momory (Used maximum)
+    
 
 ```
 
