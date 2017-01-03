@@ -31,6 +31,7 @@
     docker inspect <CONTAINER_ID> # Inspect low-level information on container
     docker exec -it <CONTAINER_ID> bash # Interactive option with container 
     docker run --rm -it Ubuntu /bin/bash  # Docker will remove container after it shutdown.
+    docker top <CONTAINER_ID> # Display the running processes of a container
     
 # Docker Images More (-t tail command, -d detached)
     docker images # Show list image
