@@ -125,6 +125,7 @@
  # Docker mornitoring 
     docker inspect -f {{.LogPath}} <CONTAINER_ID>  # View logs path within container
     docker stats <CONTAINER_ID>
+    docker stats $(docker ps -q)  # Monitor all running container
     docker run --log-driver=syslog ubuntu  # Choose log driver (syslog)
     docker events -f container=<CONTAINER_ID>  # View events real time
     docker inspect -f '{{.State.ExitCode}}' <IMAGE_NAME or IMAGE_ID>
@@ -132,7 +133,7 @@
     # Exit code
     - 125   # Command fails by itself
     - 126   # Command cannot  be invoke
-    - 127 Command cannot be found
+    - 127   # Command cannot be found
 
     dockerrun --restart=always mongo  # Restart automatically restart
     dockerrun --restart=on-failure:5 mongo  # Restart your container whenever it exits with a non-zero(Error) exit status and not restart otherwise.
