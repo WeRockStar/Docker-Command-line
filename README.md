@@ -113,6 +113,7 @@
     docker volume rm <VOLUME_ID or VOLUME_NAME>  # Remove volume
     docker rm -v <CONTAINER_ID or CONTAINER_NAME>     # Remove a volume by referencing a container
     docker run --name docker-nginx -p 80:80 -d --volumes-from <CONTAINER_ID or CONTAINER_NAME> nginx  # Run nginx with volume referencing <CONTAINER_NAME> Container's
+    docker run -v <LOCAL_PATH>:<CONTAINER_PAT> -d -p 8080:8080 <IMAGE_ID>
 
  # Working Docker-Hub   
     docker login --username=<Docker ID> --password=<PASSWORD>  # Login docker hub
